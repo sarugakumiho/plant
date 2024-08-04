@@ -15,9 +15,24 @@
     <header>
       <% if user_signed_in? %>
         <li>
+          <%= link_to "マイページ", users_path %>
+        </li>
+        <li>
+          <%= link_to "Post一覧", posts_path %>
+        </li>
+        <li>
+          <%= link_to "Aboutページ", homes_about_path %>
+        </li>
+        <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
+        <li>
+          <%= link_to "Topページ", root_path %>
+        </li>
+        <li>
+          <%= link_to "Aboutページ", homes_about_path %>
+        </li>
         <li>
           <%= link_to "新規登録", new_user_registration_path %>
         </li>
@@ -26,6 +41,12 @@
         </li>
       <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
+     
+      <%= yield %> 
+    </main>
   </body>
 </html>

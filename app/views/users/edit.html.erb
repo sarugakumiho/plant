@@ -1,24 +1,26 @@
-<h1>プロフィールの編集</h1>
-
-<% if @user.errors.any? %>
-  <%= @user.errors.count %><p>件のエラーにより保存できませんでした。<br>内容を確認し入力して下さいな。</p>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="container">
+  <h3><i class="fa-solid fa-user-pen"></i>Profile編集</h3>
+  
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %><p>件のエラーにより保存できませんでした。<br>内容を確認し入力して下さいな。</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  
+  <%= form_with model:@user do |f| %>
+    <div class="form-group">
+      <%= f.label :Name %>
+      <%= f.text_field :name, class: "form-control name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :Image %><i class="fa-regular fa-image"></i>
+      <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "編集", class: "btn btn-sm btn-success", class: "btn btn-success" %>
+    </div>
   <% end %>
-
-<%= form_with model:@user do |f| %>
-  <div class="form-group">
-    <%= f.label :Name %>
-    <%= f.text_field :name, class: "form-control name" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :Image %>
-    <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "編集", class: 'btn btn-secondary' %>
-  </div>
-<% end %>
+</div>

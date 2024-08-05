@@ -1,4 +1,18 @@
-<h1>Top</h1>
-<h2>このサイトは植物好きのための植物好きによる天然サイトとなってます🌿</h2>
-<h3>ぜひ遊びにきてください😆</h3>
-<h3>登録はこちらから上のバーの"Signup"から！</h3>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h1><i class="fa-solid fa-tree"></i>_Top_<i class="fa-solid fa-tree"></i></h1>
+      <p>このサイトは植物好きのための植物好きによる天然サイトとなってます<i class="fa-brands fa-pagelines"></i></p>
+      <p>ぜひ遊びにきてください<i class="fa-regular fa-face-smile"></i></p>
+      <p>登録はこちら<i class="fa-regular fa-hand-point-down"></i>"Signup"から！</p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to 'Sign up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

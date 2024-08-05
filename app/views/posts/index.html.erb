@@ -1,15 +1,18 @@
-<h1>Posts一覧</h1>
-
-<%= render 'users/info', user: current_user %>
-
-<%= render 'new', post: @post %>
-
-<% @posts.each do |post| %>
-  <div>
-    <p>ユーザーネーム：<%= post.user.name %></p>
-    <p>投稿画像：<%= image_tag post.get_image(100,100) %></p>
-    <p>タイトル：<%= post.title %></p>
-    <p>説明：<%= post.body %></p>
-    <%= link_to "投稿詳細へ", @post %>
-  </div>
-<% end %>
+<div class="container">
+  <h3><i class="fa-solid fa-envelopes-bulk"></i>Posts一覧</h3>
+  
+  <%= render 'users/info', user: current_user %>
+  
+  <%= render 'new', post: @post ,post_new: @post_new %>
+  
+  <% @posts.each do |post| %>
+    <div>
+      <p>ユーザー画像：<%= image_tag post.user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+      <p>ユーザーネーム：<%= post.user.name %></p>
+      <p>投稿画像：<%= image_tag post.get_image(100,100) %></p>
+      <p>タイトル：<%= post.title %></p>
+      <p>説明：<%= post.body %></p>
+      <%= link_to "投稿詳細へ", post_path(post) %>
+    </div>
+  <% end %>
+</div>

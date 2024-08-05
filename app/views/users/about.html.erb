@@ -1,0 +1,33 @@
+<div class="container">
+  <h3><i class="fa-solid fa-user"></i>My page</h3>
+  <div class="message_container mt-4">
+    <p>このサイトはテストサイトです！</p>
+    <p>8月４日から作成しています〜🍵</p>
+    <p>アプリケーション名である"Plant"という名のとおり植物に関する投稿サイトです😆</p>
+    <p>今まで作成してきたBookersやMeshiterroを参考にした簡易サイトとなっております🌱</p>
+  </div>
+
+
+<%= render 'info', user: current_user %>
+
+<% @users.each do |user| %>
+  <div>
+    <% if user.id == current_user.id %>
+      <%= image_tag user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+      <%= user.name %>
+      <% if user.posts.present? %>
+        <% user.posts.each do |post| %>
+          <%= image_tag post.get_image(100,100) %>
+          <%= post.title %>
+          <%= post.body %>
+          <%= link_to "投稿詳細へ", post_path(post) %>
+        <% end %>
+      <% else %>
+        <p>投稿がありません。。。</p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+</div>
+
+

@@ -1,5 +1,18 @@
-<h1>投稿の詳細</h1>
-
-<%= render 'users/info', user: current_user %>
-
-
+<div class="container">
+  <h3><i class="fa-solid fa-book-open"></i>投稿詳細</h3>
+  
+  <%= render 'users/info', user: current_user %>
+  
+    <div>
+      <p>ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+      <p>ユーザーネーム：<%= @post.user.name %></p>
+      <p>投稿画像：<%= image_tag @post.get_image(100,100) %></p>
+      <p>タイトル：<%= @post.title %></p>
+      <p>説明：<%= @post.body %></p>
+      
+      <% if @post.user == current_user %>
+        <%= link_to "編集へ", edit_post_path, class: "btn btn-sm btn-success" %>
+        <%= link_to "削除する", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+      <% end %>
+    </div>
+  </div>

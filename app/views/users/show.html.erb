@@ -1,2 +1,15 @@
-<h1>Userの詳細</h1>
+<div class="container">
+<h3><i class="fa-regular fa-address-card"></i>User詳細</h3>
 <%= render 'info', user: current_user %>
+
+<div>
+  <p>ユーザー画像：<%= image_tag @user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+  <p>ユーザーネーム：<%= @user.name %></p>
+　<% @user.posts.each do |post| %>
+    <p>投稿画像：<%= image_tag post.get_image(100,100) %></p>
+    <p>タイトル：<%= post.title %></p>
+    <p>説明：<%= post.body %></p>
+    <%= link_to "投稿詳細へ", post_path(post) %>
+  <% end %>
+</div>
+</div>

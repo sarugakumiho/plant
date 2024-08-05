@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   
   def create
     @post_new = Post.new(post_params)
-    @post_new.user_id = current_user
+    @post_new.user = current_user
     if @post_new.save
       flash[:notice] = "無事投稿されました🌿"
       redirect_to post_path(@post_new)
@@ -24,7 +24,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @user = @post.user
   end
 
   def edit

@@ -1,7 +1,16 @@
-<h1>マイページ</h1>
-<p>このサイトはテストサイトです！</p>
-<p>8月４日から作成しています〜🍵</p>
-<p>アプリケーション名である"Plant"という名のとおり植物に関する投稿サイトです😆</p>
-<p>今まで作成してきたBookersやMeshiterroを参考にした簡易サイトとなっております🌱</p>
-
-<%= render 'info', user: current_user %>
+<div class="container">
+  <h3><i class="fa-solid fa-users"></i>User一覧</h3>
+  
+  <%= render 'info', user: current_user %>
+  
+  <%= @users.each do |user|%>
+    <tr>
+      <td><%= image_tag user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
+      <td><%= user.name %></td>
+      <!--<td>フォロー数: <%#= user.followings.count %></td>-->
+      <!--<td>フォロワー数: <%#= user.followers.count %></td>-->
+      <!--<td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>-->
+      <td><%= link_to 'User詳細へ', user %></td>
+    </tr>
+  <% end %>
+</div>

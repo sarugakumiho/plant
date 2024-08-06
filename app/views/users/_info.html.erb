@@ -1,18 +1,23 @@
 <table class='table'>
   <tr>
+    <td>User紹介</td>
+  </tr>
+  <tr>
     <td><%= image_tag user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
+  </tr>
+  <tr>
     <td><%= user.name %></td>
+  </tr>
+</table>
     <!--<td>フォロー数: <%#= user.followings.count %></td>-->
     <!--<td>フォロワー数: <%#= user.followers.count %></td>-->
     <!--<td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>-->
-    <div class='row w-25'>
-      <% if current_user != user %>
-        <td><%= render "relationships/btn", user: user, options: { class: ""} %></td>
-      <% else %>
-        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fa-solid fa-user-pen"></i>profile編集
-        <% end %>
-      <% end %>
+<div class='row'>
+  <% if current_user != user %>
+    <td><%= render "relationships/btn", user: user, options: { class: ""} %></td>
+  <% else %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fa-solid fa-user-pen"></i>profile編集
+    <% end %>
+  <% end %>
 </div>
-  </tr>
-</table>

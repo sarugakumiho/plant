@@ -1,15 +1,38 @@
 <div class="container">
-<h3><i class="fa-regular fa-address-card"></i>User詳細</h3>
-<%= render 'info', user: current_user %>
-
-<div>
-  <p>ユーザー画像：<%= image_tag @user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
-  <p>ユーザーネーム：<%= @user.name %></p>
-　<% @user.posts.each do |post| %>
-    <p>投稿画像：<%= image_tag post.get_image(100,100) %></p>
-    <p>タイトル：<%= post.title %></p>
-    <p>説明：<%= post.body %></p>
-    <%= link_to "投稿詳細へ", post_path(post) %>
-  <% end %>
-</div>
+  <div class='container px-5 px-sm-0'>
+    <div class='row'>
+      
+      <div class='col-md-3'>
+        <h3><i class="fa-regular fa-address-card"></i>User詳細</h3>
+        <%= render 'info', user: current_user %>
+      </div>
+      
+      <div class='col-md-8 offset-md-1'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>Userimage</th>
+              <th>Username</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Thoughts</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.posts.each do |post| %>
+              <tr>
+                <td><%= image_tag post.user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
+                <td><%= image_tag post.get_image(100,100) %></td>
+                <td><%= post.title %></td>
+                <td><%= post.body %></td>
+                <td><%= link_to "Post詳細へ", post_path(post) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
 </div>

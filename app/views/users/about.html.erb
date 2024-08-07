@@ -33,11 +33,11 @@
                         <td><%= image_tag post.get_image(100,100) %></td>
                         <td><%= post.title %></td>
                         <td><%= post.body %></td>
-                        <td><%= link_to "Po詳細へ", post_path(post) %></td>
+                        <td><%= link_to "詳細へ", post_path(post) %></td>
                       </tr>
                     <% end %>
                     <% else %>
-                    <td><p>投稿がありません。。。</p></td>
+                    <td><p>投稿がありません、、、何か投稿してみよう！📷</p></td>
                   <% end %>
                 <% end %>
             <% end %>

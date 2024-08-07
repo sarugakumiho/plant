@@ -9,26 +9,7 @@
       
       <div class='col-md-8 offset-md-1'>
         <table class='table'>
-          <thead>
-            <tr>
-              <th>Userimage</th>
-              <th>Username</th>
-              <th></th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-        　<tbody>  
-            <% @users.each do |user| %>
-              <tr>
-                <td><%= image_tag user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
-                <td><%= user.name %></td>
-                <!--<td>フォロー数: <%#= user.followings.count %></td>-->
-                <!--<td>フォロワー数: <%#= user.followers.count %></td>-->
-                <!--<td><%#= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>-->
-                <td><%= link_to 'User詳細へ', user %></td>
-              </tr>
-            <% end %>
-          </tbody>
+          <%= render 'index', users: @users %>
         </table>
       </div>
       

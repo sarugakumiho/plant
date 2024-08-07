@@ -26,13 +26,26 @@
               <td><%= image_tag @post.get_image(100,100) %></td>
               <td><%= @post.title %></td>
               <td><%= @post.body %></td>
-              <td>
-                <% if @post.user == current_user %>
-                  <%= link_to "編集へ", edit_post_path, class: "btn btn-sm btn-success" %>
-                  <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </td>
             </tr>
+            <tr>
+              <td id="comment_counter">
+                <%= render "post_comments/counter", post: @post %>
+              </td>
+              <!--上記コメント機能の非同期通信処理についてはidを採用中-->
+              <td class=<%= "favorite-" + @post.id.to_s %> >
+                <%= render "favorites/btn", post: @post %>
+              </td>
+              <!--上記いいね機能の非同期通信処理についてはclassを採用中-->
+              <% if @post.user == current_user %>
+                <td><%= link_to "編集", edit_post_path, class: "btn btn-sm btn-success" %></td>
+                <td><%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tr>
+              <div id="comment_index">
+                <%= render "post_comments/index", post: @post %>
+              </div>
+              <%= render "post_comments/form", post: @post, post_comment:  @post_comment %>
+              <!--上記コメント機能の非同期通信処理についてはidを採用中-->
           </tbody>
         </table>
       </div>

@@ -23,10 +23,12 @@
             <% @user.posts.each do |post| %>
               <tr>
                 <td><%= image_tag post.user.get_profile_image(100,100), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
+                <td><%= post.user.name %></td>
                 <td><%= image_tag post.get_image(100,100) %></td>
                 <td><%= post.title %></td>
                 <td><%= post.body %></td>
-                <td><%= link_to "Post詳細へ", post_path(post) %></td>
+                <td><%= link_to "詳細へ", post_path(post) %></td>
+                <td><%= link_to "#{post.post_comments.count} コメ", post_path(post.id) %></td>
               </tr>
             <% end %>
           </tbody>

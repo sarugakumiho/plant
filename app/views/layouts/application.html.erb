@@ -73,7 +73,10 @@
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-     
+      <div class="container d-flex justify-content-end">
+        <%= render 'searches/search' %>
+      </div>
+      
       <%= yield %> 
     </main>
   </body>
